@@ -2,8 +2,8 @@ const Validator = require('validatorjs');
 
 const validateSignUp = (req, res, next) => {
   const user = {
-    firstname: req.body.firstname,
-    lastname: req.body.lastname,
+    firstname: req.body.firstName,
+    lastname: req.body.lastName,
     email: req.body.email,
     password: req.body.password,
   };
