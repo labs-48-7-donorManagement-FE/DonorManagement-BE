@@ -4,9 +4,14 @@
   "description": "A donor management app allows for donor communication tracking and user management",
   "main": "app.js",
   "scripts": {
+    "build-server": "babel server --out-dir dist",
+    "build": "npm run clean && npm run build-server",
+    "clean": "rm -rf dist && mkdir dist",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel server/app.js --out-dir build",
-    "start-dev": "nodemon ./server/app.js --exec babel-node"
+    "start-dev": "nodemon ./server/app.js --exec babel-node",
+    "migration": "npx sequelize-cli db:migrate",
+    "start": "node dist/app.js",
+    "heroku-postbuild": "npm run build && npm run migration"
   },
   "repository": {
     "type": "git",
@@ -19,6 +24,9 @@
   },
   "homepage": "https://github.com/labs-48-7-donorManagement-FE/DonorManagement-BE#readme",
   "dependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/register": "^7.4.4",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "dotenv": "^8.0.0",
@@ -31,9 +39,6 @@
     "validatorjs": "^3.15.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.5",
-    "@babel/register": "^7.4.4",
-    "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "eslint": "^6.0.0",
     "eslint-config-airbnb-base": "^13.1.0",
