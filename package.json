@@ -1,0 +1,43 @@
+{
+  "name": "donormanagement-be",
+  "version": "1.0.0",
+  "description": "A donor management app allows for donor communication tracking and user management",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel server/app.js --out-dir build",
+    "start-dev": "nodemon ./server/app.js --exec babel-node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/labs-48-7-donorManagement-FE/DonorManagement-BE.git"
+  },
+  "author": "Soji Soyoye",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/labs-48-7-donorManagement-FE/DonorManagement-BE/issues"
+  },
+  "homepage": "https://github.com/labs-48-7-donorManagement-FE/DonorManagement-BE#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "path": "^0.12.7",
+    "pg": "^7.11.0",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.8.12",
+    "validatorjs": "^3.15.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/register": "^7.4.4",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^6.0.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.3",
+    "nodemon": "^1.19.1"
+  }
+}
