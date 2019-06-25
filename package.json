@@ -4,9 +4,14 @@
   "description": "A donor management app allows for donor communication tracking and user management",
   "main": "app.js",
   "scripts": {
+    "build-server": "babel server --out-dir dist",
+    "build": "npm run clean && npm run build-server",
+    "clean": "rm -rf dist && mkdir dist",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel server/app.js --out-dir build",
-    "start-dev": "nodemon ./server/app.js --exec babel-node"
+    "start-dev": "nodemon ./server/app.js --exec babel-node",
+    "migration": "npx sequelize-cli db:migrate",
+    "start": "node dist/app.js",
+    "heroku-postbuild": "npm run build && npm run migration"
   },
   "repository": {
     "type": "git",
