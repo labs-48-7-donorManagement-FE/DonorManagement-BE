@@ -17,8 +17,8 @@ export const signUp = async (req, res) => {
     const existingUser = await User.findOne({ where: { email } });
 
     if (existingUser) {
-      return res.status(409).json({
-        status: 'failed',
+      return res.status(409).send({
+        status: 409,
         message: 'User with this email already exist'
       });
     }
@@ -47,7 +47,7 @@ export const login = async (req, res) => {
     if (!user) {
       return res.status(404).json({
         status: 'failed',
-        messaege: 'User does not exist'
+        message: 'Authentication failed'
       });
     }
 
@@ -57,7 +57,7 @@ export const login = async (req, res) => {
     if (user && !comparePassword(user.password, password)) {
       res.status(400).json({
         status: 'failed',
-        message: 'Incorrect password'
+        message: 'Authentication failed'
       });
     } else {
       res.status(200).json({
